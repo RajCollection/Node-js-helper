@@ -1,0 +1,171 @@
+1. What is node.js
+Ans: node.js is single threaded and highly scallable system that utilize javascript as its scripting language
+- it built on top of V8 Javascript engine runtime environment with libraries without browser environment
+- Event driven
+- It do single threaded and run multiple asyn functions simultaneosly using event looping feature
+- used in realtime environment like real time chat, etc
+- used to develop REST API server
+- its written on top of c++
+-------------
+2. Node REPL : Read evelove print loop
+--------------
+
+3. Why use node?
+- Fast, efficient and high scalabale,Asyncronous
+- Event driven, non-blocking i/o model
+- Popular in the industry
+- Same language on the front and back end(js)
+
+-------------------
+
+4. what is an error-first callback?
+Ans: check error first before processing data
+var data = fs.readFile("app.txt", function(err,data){
+   if(err){
+     return;
+   }
+   console.log(data);
+})
+
+var myCallback = function(err,data){
+  if(err){
+   throw err;
+  }
+  console.log(data)
+}
+
+var usingItNow = function(callback){
+  callback(new Error("error occured"), "got it");
+}
+
+usingItNow(myCallback);
+
+----------------------
+
+5. How to avoid callback hell?
+
+Ans: callback hell will happen when nested callback function uses
+solution is promises
+
+-------------
+
+6. What are promises?
+
+Ans: to deal with Async operation we use promises, in ES6 we use
+
+let obj = new Promise(function(resolve,reject){
+  //resolve a promise
+  //or
+  //reject a promise
+})
+
+-------
+7. when should you npm and when yarn?
+
+Ans: yarn is little bit faster than npm
+
+-----
+8. what's your favorite HTTP framework and why?
+
+Ans: Express framework
+
+-----
+9. Callback vs Promises
+
+Ans: * Callback is block of code which response to an event
+     * Callback is a function which we will pass from another function
+     * Promise will until process happened or not, but callback wont
+     
+function getAPIData(){
+  //http call to some api
+  return new Promise(function(resolve,reject){
+    return resolve(data)
+  })
+}
+      * Callback handle success and failure, but Promiuses do not handle anything
+      * Callback can be called multiple times but promises can all only onetime
+
+------------
+10. What are promises?
+Ans: * in ES6 we can write promises
+
+var p = new Promise(fuction(resolve, reject){
+  if(true){
+    resolve(/*value*/);   // fulfilled successfully
+  }
+  else{
+   reject(/* reason*/);   // error, rejected
+  }
+});
+
+p.then(function(data){
+  //capture data
+})
+
+var p = new Promise((resolve,reject) => resolve(5));
+p.then((val) => console.log(val));  //5
+
+var fetchJSOn = function(url){
+  return new Promise((resolve, reject) => {
+    $.getJSON(url).done(function(json){
+      resolve(data)
+    }).fail(function(err){
+      reject(err)
+    })
+  })
+}
+
+//call promise on multiple urls
+
+var itemUrl = [
+ "http://api.com","http://api.com",
+]
+
+itemPromise =  itemUrl.map(fetchJSON);
+
+Promise.all(itemPromise).then(function(result){
+  itemPromise.map(function(data){
+    console.log(data)
+  })
+})
+
+-----------------------
+11. Event driven?
+Ans: it build of our application based on user response
+
+function addTocart(id){
+	new Eventemiter("cart.add", {product_id: id});
+}
+
+event.on("cart.add", function(event){
+	//event.product_id
+})
+------------------
+
+s12. ubscribe and publish in event driven?
+
+------------
+13. export?
+
+Ans: Export is to export the file/function to utilize in another file
+
+module.export = {
+	sayHello: function(){
+	  return "hello";
+	},
+
+	sayHi: function(){
+		return "Hi"
+	}
+}
+
+greetings.js
+
+var greetings = require('./greetings');
+greetings.sayHello();
+
+------------------
+14. Node.js modules:
+fs, Http, net, socket.io,express,events,path,url,
+
+--------------
